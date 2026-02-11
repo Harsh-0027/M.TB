@@ -33,17 +33,20 @@ container.appendChild(fragment);
 
 // Selecting Seats
 container.addEventListener("click", (e) => {
-    if (e.target.classList.contains("seat")) {
-        const isSlected = e.target.classList.toggle("selected");
+    if (
+        e.target.classList.contains("seat") &&
+        !e.target.classList.contains("occupied")
+    ) {
+        const isSelected = e.target.classList.toggle("selected");
 
-        if (isSlected) {
+        if (isSelected) {
             selectedSeats.push(e.target.dataset.seatNumber);
-            console.log(selectedSeats);
         } else {
             let index = selectedSeats.indexOf(e.target.dataset.seatNumber);
             selectedSeats.splice(index, 1);
-            console.log(selectedSeats);
         }
+
+        console.log(selectedSeats);
     }
 });
 
